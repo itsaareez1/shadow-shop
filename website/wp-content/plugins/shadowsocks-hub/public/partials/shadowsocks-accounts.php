@@ -83,6 +83,7 @@ if (is_null($subscriptionId)) {
 <table class="woocommerce-orders-table woocommerce-MyAccount-orders shop_table shop_table_responsive my_account_orders account-orders-table">
 	<thead>
 		<tr>
+	    <th class="woocommerce-orders-table__header"><span class="nobr"><?php _e('Name', 'shadowsocks-hub'); ?></span></th>
             <th class="woocommerce-orders-table__header"><span class="nobr"><?php _e('Host', 'shadowsocks-hub'); ?></span></th>
             <th class="woocommerce-orders-table__header"><span class="nobr"><?php _e('Port', 'shadowsocks-hub'); ?></span></th>
             <th class="woocommerce-orders-table__header"><span class="nobr"><?php _e('Password', 'shadowsocks-hub'); ?></span></th>
@@ -98,8 +99,9 @@ if (is_null($subscriptionId)) {
                 $port = $account['port'];
                 $password = $account['password'];
                 $method = $account['method'];
-                $url = "ss://" . base64_encode("$method:$password@$host:$port")?>
+                $url = "ss://" . base64_encode("$method:$password@$host:$port") . "#" . $account['node']['name'] ?>
 			<tr class="woocommerce-orders-table__row">
+                <td class="woocommerce-orders-table__cell" data-title="Name"><?php echo $account['node']['name'] ?></td>				
                 <td class="woocommerce-orders-table__cell" data-title="Host"><?php echo $host?></td>
                 <td class="woocommerce-orders-table__cell" data-title="Port"><?php echo $port?></td>
                 <td class="woocommerce-orders-table__cell" data-title="Password"><?php echo $password?></td>
